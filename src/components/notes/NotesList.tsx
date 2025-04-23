@@ -18,6 +18,7 @@ function NotesList() {
           .map((note: NoteType) => (
             <li key={note.id}>
               <NoteItem
+                id={note.id}
                 title={note.title}
                 tags={note.tags}
                 date={note.modifiedDate}

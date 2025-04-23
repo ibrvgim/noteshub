@@ -45,7 +45,7 @@ const initialState: { notes: NoteType[] } = {
       description:
         'Brainstorming features that can improve decision-making for users hiring freelancers.',
       modifiedDate: '2025-03-05',
-      tags: ['ux', 'freelancing', 'ideas'],
+      tags: ['freelancing', 'ideas'],
       archived: false,
     },
     {

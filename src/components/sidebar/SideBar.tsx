@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import Logo from '../other/Logo';
-import ThemeMode from '../other/ThemeMode';
+import Logo from '../general/Logo';
+import ThemeMode from '../general/ThemeMode';
 import NavLink from './NavLink';
 import TagLink from './TagLink';
 import { NoteType } from '../../types/types';
@@ -28,8 +28,8 @@ function SideBar() {
           Tags
         </p>
 
-        <ul className="flex h-[24rem] flex-col gap-4 overflow-auto">
-          {tags.map((tag) => (
+        <ul className="flex flex-col gap-4">
+          {tags.slice(0, 12).map((tag) => (
             <li key={tag}>
               <TagLink value={tag}>{tag}</TagLink>
             </li>
