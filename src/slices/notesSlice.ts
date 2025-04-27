@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NoteType } from '../types/types';
 
-const initialState: { notes: NoteType[] } = {
+const initialState: { notes: NoteType[]; searchBy: string } = {
   notes: [
     {
       id: '001',
@@ -93,6 +93,7 @@ const initialState: { notes: NoteType[] } = {
       archived: true,
     },
   ],
+  searchBy: '',
 };
 
 const notesSlice = createSlice({
@@ -102,8 +103,28 @@ const notesSlice = createSlice({
     setNote: (state, action) => {
       state.notes = action.payload;
     },
+
+    setArchive: (state, action) => {
+      state.notes = state.notes.map((note) => {
+        if (note.id === action.payload.currentID) {
+          return {
+            ...note,
+            archived: action.payload.type === 'archive' ? true : false,
+          };
+        } else return note;
+      });
+    },
+
+    setDelete: (state, action) => {
+      state.notes = state.notes.filter((note) => note.id !== action.payload);
+    },
+
+    setSearchBy: (state, action) => {
+      state.searchBy = action.payload;
+    },
   },
 });
 
-export const { setNote } = notesSlice.actions;
+export const { setNote, setArchive, setDelete, setSearchBy } =
+  notesSlice.actions;
 export default notesSlice.reducer;

@@ -1,6 +1,6 @@
-import { Outlet } from "react-router";
-import SideBar from "./components/sidebar/SideBar";
-import Navigation from "./components/navigation/Navigation";
+import { Outlet } from 'react-router';
+import SideBar from './components/sidebar/SideBar';
+import Navigation from './components/navigation/Navigation';
 
 function App() {
   return (

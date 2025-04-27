@@ -1,20 +1,34 @@
-import { useSelector } from 'react-redux';
 import NoteItem from './NoteItem';
 import { NoteType } from '../../types/types';
-import { useLocation } from 'react-router';
+import Button from '../general/Button';
+import { useSelector } from 'react-redux';
 
-function NotesList() {
-  const location = useLocation();
-  const isArchive = location?.pathname.includes('archive');
-  const { notes } = useSelector(
-    (state: { notes: { notes: NoteType[] } }) => state.notes,
+function NotesList({
+  notes,
+  isArchive,
+}: {
+  notes: NoteType[];
+  isArchive: boolean;
+}) {
+  const inputValue = useSelector(
+    (state: { notes: { searchBy: string } }) => state.notes.searchBy,
   );
 
   return (
     <div>
-      <ul className="flex flex-col px-2 py-4">
+      <div className="mt-4 px-3">
+        <Button style="justify-center">Create New Note</Button>
+      </div>
+
+      <ul className="flex flex-col overflow-auto px-3 py-4">
         {notes
-          .filter((note) => note.archived === isArchive)
+          .filter(
+            (note) =>
+              note.archived === isArchive &&
+              (note.title.toLowerCase().includes(inputValue) ||
+                note.description.toLowerCase().includes(inputValue) ||
+                note.tags.includes(inputValue)),
+          )
           .map((note: NoteType) => (
             <li key={note.id}>
               <NoteItem
