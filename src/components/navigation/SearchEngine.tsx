@@ -14,11 +14,11 @@ function SearchEngine() {
   return (
     <div className="flex items-center gap-6">
       <div className="relative flex items-center">
-        <MagnifyingGlassIcon className="absolute left-3 size-[18px] text-gray-500 dark:text-gray-300" />
+        <MagnifyingGlassIcon className="absolute left-3 size-[18px]" />
         <input
           type="text"
           placeholder="Search by title / content / tags..."
-          className="h-9 w-72 rounded-md border-[1px] border-gray-400 bg-transparent pl-9 pr-2 text-sm placeholder:text-sm placeholder:text-gray-500 dark:text-gray-300 dark:placeholder:text-gray-400"
+          className="h-9 w-72 rounded-md border-[1px] border-gray-500 bg-transparent pl-9 pr-2 text-sm placeholder:text-sm placeholder:text-gray-500 focus:outline focus:outline-1 focus:outline-violet-600 dark:text-gray-300 dark:placeholder:text-gray-400"
           value={inputValue}
           onChange={(event) => dispatch(setSearchBy(event.target.value))}
         />

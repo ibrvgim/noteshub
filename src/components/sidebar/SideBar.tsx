@@ -29,7 +29,7 @@ function SideBar() {
         </p>
 
         <ul className="flex flex-col gap-4">
-          {tags.slice(0, 12).map((tag) => (
+          {tags.slice(0, 10).map((tag) => (
             <li key={tag}>
               <TagLink value={tag}>{tag}</TagLink>
             </li>

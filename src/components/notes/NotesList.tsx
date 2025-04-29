@@ -13,6 +13,9 @@ function NotesList({
   const inputValue = useSelector(
     (state: { notes: { searchBy: string } }) => state.notes.searchBy,
   );
+  const { tags } = useSelector(
+    (state: { tags: { tags: string[] } }) => state.tags,
+  );
 
   return (
     <div>
@@ -22,6 +25,12 @@ function NotesList({
 
       <ul className="flex flex-col overflow-auto px-3 py-4">
         {notes
+          .filter((note) => {
+            if (tags.length) {
+              const checkTags = tags.some((tag) => note.tags.includes(tag));
+              if (checkTags) return note;
+            } else return note;
+          })
           .filter(
             (note) =>
               note.archived === isArchive &&

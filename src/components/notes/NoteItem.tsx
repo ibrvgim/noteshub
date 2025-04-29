@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from 'react-router';
 import Tag from '../general/Tag';
+import convertDate from '../../features/convertDate';
 
 function NoteItem({
   id,
@@ -10,7 +11,7 @@ function NoteItem({
   id: string;
   title: string;
   tags: string[];
-  date: string;
+  date: Date;
 }) {
   const [searchParams] = useSearchParams();
   const currentID = searchParams.get('note') as string;
@@ -33,7 +34,9 @@ function NoteItem({
         ))}
       </ul>
 
-      <p className="text-end text-[10px] font-semibold text-gray-500">{date}</p>
+      <p className="text-end text-[10px] font-semibold text-gray-500">
+        {convertDate(date)}
+      </p>
     </Link>
   );
 }

@@ -1,5 +1,6 @@
 import Tag from '../general/Tag';
 import { NoteType } from '../../types/types';
+import convertDate from '../../features/convertDate';
 
 function NoteDetailsContent({
   notes,
@@ -24,7 +25,9 @@ function NoteDetailsContent({
             ))}
           </div>
 
-          <p className="text-end text-xs text-gray-500">{modifiedDate}</p>
+          <p className="text-end text-xs text-gray-500">
+            {convertDate(modifiedDate)}
+          </p>
         </div>
       </div>
 
