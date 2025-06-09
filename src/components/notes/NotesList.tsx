@@ -1,7 +1,8 @@
 import NoteItem from './NoteItem';
 import { NoteType } from '../../types/types';
 import Button from '../general/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setModalWindow } from '../../slices/modalSlice';
 
 function NotesList({
   notes,
@@ -16,11 +17,17 @@ function NotesList({
   const { tags } = useSelector(
     (state: { tags: { tags: string[] } }) => state.tags,
   );
+  const dispatch = useDispatch();
 
   return (
     <div>
       <div className="mt-4 px-3">
-        <Button style="justify-center">Create New Note</Button>
+        <Button
+          style="justify-center"
+          onClick={() => dispatch(setModalWindow())}
+        >
+          Create New Note
+        </Button>
       </div>
 
       <ul className="flex flex-col overflow-auto px-3 py-4">

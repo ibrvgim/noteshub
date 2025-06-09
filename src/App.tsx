@@ -2,6 +2,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import SideBar from './components/sidebar/SideBar';
 import Navigation from './components/navigation/Navigation';
 import { useEffect } from 'react';
+import ModalWindow from './components/general/ModalWindow';
 
 function App() {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ function App() {
       <SideBar />
       <Navigation />
       <Outlet />
+      <ModalWindow />
     </main>
   );
 }
